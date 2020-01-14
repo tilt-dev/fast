@@ -132,7 +132,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func enhance(file string) ([]byte, error) {
-	return sendPostRequest("http://localhost:5000/model/predict", file, "image/png")
+	return sendPostRequest("http://ml:5000/model/predict", file, "image/png")
 }
 
 func handleHTTPErr(w http.ResponseWriter, errMsg string) {

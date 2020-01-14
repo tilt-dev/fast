@@ -1,6 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: enhance
+  labels:
+    app: enhance
+spec:
+  selector:
+    matchLabels:
+      app: enhance
+  template:
+    metadata:
+      labels:
+        app: enhance
+    spec:
+      containers:
+      - name: enhance
+        image: enhance
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: ml
   labels:
     app: ml
