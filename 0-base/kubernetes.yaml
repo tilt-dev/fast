@@ -39,3 +39,15 @@ spec:
         image: codait/max-image-resolution-enhancer
         ports:
         - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml
+spec:
+  selector:
+    app: ml
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
