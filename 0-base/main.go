@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	_ "github.com/influxdata/influxdb"
 	"github.com/peterbourgon/diskv"
 )
 
@@ -24,7 +25,7 @@ var d = diskv.New(diskv.Options{
 })
 
 func main() {
-	called := time.Unix(0, 1579020717400291846)
+	called := time.Unix(0, 1579036526103319321)
 	current := time.Now()
 	elapsed := current.Sub(called)
 	fmt.Println("\nStarting up!")
@@ -132,7 +133,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func enhance(file string) ([]byte, error) {
-	return sendPostRequest("http://localhost:5000/model/predict", file, "image/png")
+	return sendPostRequest("http://ml:5000/model/predict", file, "image/png")
 }
 
 func handleHTTPErr(w http.ResponseWriter, errMsg string) {

@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enhance
+  labels:
+    app: enhance
+spec:
+  selector:
+    matchLabels:
+      app: enhance
+  template:
+    metadata:
+      labels:
+        app: enhance
+    spec:
+      containers:
+      - name: enhance
+        image: enhance
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "2000m"
+          limits:
+            cpu: "2000m"
+          # requests:
+          #   cpu: "500m"
+          # limits:
+          #   cpu: "500m"
+          requests:
+            memory: "1Gi"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml
+  labels:
+    app: ml
+spec:
+  selector:
+    matchLabels:
+      app: ml
+  template:
+    metadata:
+      labels:
+        app: ml
+    spec:
+      containers:
+      - name: ml
+        image: codait/max-image-resolution-enhancer
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "7Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml
+spec:
+  selector:
+    app: ml
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

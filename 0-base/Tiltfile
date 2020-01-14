@@ -2,4 +2,6 @@ k8s_yaml(['kubernetes.yaml'])
 
 k8s_resource('enhance', port_forwards='8080')
 
-docker_build('enhance', '.')
+local_resource('update', "sed -re 's/time.Unix\(0, ([0-9]*)\)/time.Unix\(0, '\"$(($(date +%s%N)))\"'\)/' -i main.go", deps=['update'])
+
+docker_build('enhance', '.', ignore=['update'])
