@@ -1,0 +1,5 @@
+k8s_yaml(['kubernetes.yaml'])
+
+k8s_resource('enhance', port_forwards='8080')
+
+docker_build('enhance', '.')
