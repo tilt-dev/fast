@@ -25,7 +25,7 @@ var d = diskv.New(diskv.Options{
 })
 
 func main() {
-	called := time.Unix(0, 1579036526103319321)
+	called := time.Unix(0, 1579049018888297228)
 	current := time.Now()
 	elapsed := current.Sub(called)
 	fmt.Println("\nStarting up!")

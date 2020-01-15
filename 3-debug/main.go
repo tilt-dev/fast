@@ -16,6 +16,7 @@ import (
 
 	_ "github.com/influxdata/influxdb"
 	"github.com/peterbourgon/diskv"
+	_ "github.com/spf13/cobra"
 )
 
 var d = diskv.New(diskv.Options{
@@ -25,7 +26,7 @@ var d = diskv.New(diskv.Options{
 })
 
 func main() {
-	called := time.Unix(0, 1579036526103319321)
+	called := time.Unix(0, 1579050649887758673)
 	current := time.Now()
 	elapsed := current.Sub(called)
 	fmt.Println("\nStarting up!")

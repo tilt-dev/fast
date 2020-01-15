@@ -1,5 +1,4 @@
 FROM golang:alpine
-EXPOSE 8080
 RUN mkdir /app 
 WORKDIR /app 
 ADD go.mod go.sum /app/
